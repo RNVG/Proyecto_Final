@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - Aventones</title>
+    <script src="JS/rol.js"></script>
+  
+  <link rel="stylesheet" href="css/role_visibility.css" />
+  
+  <link rel="stylesheet" href="estiloHome.css" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+  <div class="top-logo">
+    <img src="img/logo.png" alt="Logo" />
+    <span>AVENTONES</span>
+  </div>
+
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="Home.html" class="active">Home</a></li>
+        <li><a href="Myrides.html">Rides</a></li>
+        <li><a href="view_booking.html">Bookings</a></li>
+      </ul>
+    </nav>
+    <div class="user-area">
+      <input type="text" placeholder="Search..." />
+      <div class="profile-menu">
+        <img src="img/avatar.png" alt="User Icon" />
+        <ul class="dropdown">
+           <li><a href="login.html">Logout</a></li>
+          <li><a href="editProfile.html">Profile</a></li>
+          <li><a href="configuration.html">Configuration</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+   <!-- Dentro del <main> -->
+<h2>Search rides</h2>
+
+<div class="search-box">
+  <form>
+    <div class="search-top">
+      <label>
+        From
+        <select>
+          <option>Quesada</option>
+        </select>
+      </label>
+      <label>
+        To
+        <select>
+          <option>Zarcero</option>
+        </select>
+      </label>
+      <button type="submit" class="find-btn">Find rides</button>
+    </div>
+
+   <div class="days-group">
+  <span class="days-label">Days</span>
+  <div class="days">
+    <label><input type="checkbox" checked> Mon</label>
+    <label><input type="checkbox" checked> Tue</label>
+    <label><input type="checkbox" checked> Wed</label>
+    <label><input type="checkbox" checked> Thu</label>
+    <label><input type="checkbox" checked> Fri</label>
+    <label><input type="checkbox"> Sat</label>
+    <label><input type="checkbox"> Sun</label>
+  </div>
+</div>
+  </form>
+</div>
+
+    <!-- RESULTADOS -->
+    <div class="results">
+      <p>Rides found from <strong>Quesada</strong> to <strong>Zarcero</strong></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Driver</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Seats</th>
+            <th>Car</th>
+            <th>Fee</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>barroyo</td>
+            <td><a href="#">Quesada</a></td>
+            <td>Alajuela</td>
+            <td>2</td>
+            <td>Nissan Pathfinder 2015</td>
+            <td>$5</td>
+            <td><a href="#">Request</a></td>
+          </tr>
+          <tr>
+            <td>barroyo</td>
+            <td><a href="#">Quesada</a></td>
+            <td>Naranjo</td>
+            <td>1</td>
+            <td>Toyota Corolla 2020</td>
+            <td>$10</td>
+            <td><a href="#">Request</a></td>
+          </tr>
+          <tr>
+            <td>yluna</td>
+            <td><a href="#">Aguas Zarcas</a></td>
+            <td>Naranjo</td>
+            <td>1</td>
+            <td>Ford Festiva 1990</td>
+            <td>--</td>
+            <td><a href="#">Request</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mapa Leaflet -->
+    <div id="map" style="height: 400px; margin-top: 30px;"></div>
+  </main>
+
+  <footer>
+    <div>
+      <a href="Home.html">Home</a> |
+      <a href="MyRides.html" data-role-only="driver">Rides</a>
+      <a href="view_booking.html">Bookings</a> |
+      <a href="configuration.html">Settings</a> |
+      <a href="login.html">Login</a> |
+      <a href="registro_clientes.html">Register</a>
+    </div>
+    <p>&copy; Aventones.com</p>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([10.3275, -84.4298], 13);
+    // Blanco y negro con CartoDB Positron
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap, &copy; CartoDB'
+    }).addTo(map);
+    
+    L.marker([10.3275, -84.4298]).addTo(map)
+      .bindPopup('Quesada, CR')
+      .openPopup();
+  </script>
+</body>
+</html>

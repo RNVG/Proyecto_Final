@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Aventones - Ride Details</title>
+  <script src="JS/auth.js"></script>
+  <script src="JS/ride_details.js"></script>
+  <link rel="stylesheet" href="estilo_Rides.css" />
+</head>
+<body>
+  <!-- Encabezado y Navegación -->
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <img src="img/logo.png" alt="Aventones Logo" />
+        <h1>AVENTONES</h1>
+      </div>
+
+      <nav class="navbar">
+        <a href="Home.html">Home</a>
+        <a class="active" href="MyRides.html">Rides</a>
+        <a href="view_booking.html">Bookings</a>
+        <input type="text" placeholder="Search..." class="search-box" />
+
+        <div class="profile-menu">
+          <img src="img/avatar.png" alt="User avatar" class="avatar" />
+          <ul class="dropdown">
+            <li><a href="login.html">Logout</a></li>
+            <li><a href="editProfile.html">Profile</a></li>
+            <li><a href="configuration.html">Configuration</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main class="rides-container">
+    <h2 class="ride-title">Ride Details</h2>
+
+    <div class="user-info">
+      <img id="driverAvatar" src="img/avatar.png" alt="avatar" class="avatar-icon" />
+      <p class="username" id="driverName"></p>
+    </div>
+
+    <form class="ride-form" id="rideDetailsForm">
+      <div class="row top-row">
+        <div class="field-group">
+          <label>Departure from</label>
+          <input id="fromInput" type="text" />
+        </div>
+        <div class="field-group">
+          <label>Arrive to</label>
+          <input id="toInput" type="text" />
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Days</label>
+        <div class="days checkboxes" id="daysContainer"></div>
+      </div>
+
+      <div class="row three-fields">
+        <div class="field-group">
+          <label>Time</label>
+          <input id="timeInput" type="time" />
+        </div>
+        <div class="field-group">
+          <label>Seats</label>
+          <input id="seatsInput" type="number" min="1" />
+        </div>
+        <div class="field-group">
+          <label>Fee</label>
+          <input id="feeInput" type="number" min="0" step="0.01" />
+        </div>
+      </div>
+
+      <fieldset class="vehicle-details">
+        <legend>Vehicle Details</legend>
+        <div class="row three-fields">
+          <div class="field-group">
+            <label>Make</label>
+            <select id="makeSelect"></select>
+          </div>
+          <div class="field-group">
+            <label>Model</label>
+            <input id="modelInput" type="text" />
+          </div>
+          <div class="field-group">
+            <label>Year</label>
+            <input id="yearInput" type="number" min="1900" max="2099" />
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <a href="#" class="cancel" id="btnCancel">Cancel</a>
+        <button type="submit" class="submit-btn" id="btnRequest">Request</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Pie de Página -->
+  <footer>
+    <div class="footer-links">
+      <a href="Home.html">Home</a> |
+      <a href="MyRides.html">Rides</a> |
+      <a href="view_booking.html">Bookings</a> |
+      <a href="configuration.html">Settings</a> |
+      <a href="login.html">Login</a> |
+      <a href="registro_clientes.html">Register</a>
+    </div>
+    <p>&copy; Aventones.com</p>
+  </footer>
+
+  
+</body>
+</html>

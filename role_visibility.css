@@ -1,0 +1,40 @@
+/* ---- Visibilidad basada en rol (global) ---- */
+/* Oculta Rides/MyRides/New Ride a clientes e invitados (guest) – en header y footer */
+html[data-role="client"] nav a[href*="MyRides.html" i],
+
+html[data-role="client"] nav a[href*="Rides.html" i],
+
+html[data-role="client"] nav a[href*="new_ride.html" i],
+
+html[data-role="client"] .footer-links a[href*="MyRides.html" i],
+
+html[data-role="client"] .footer-links a[href*="rides.html" i],
+
+html[data-role="client"] .footer-links a[href*="new_ride.html" i]{
+
+  display: none !important;
+}
+
+/* Si tienes botón/clase para crear ride */
+html[data-role="client"] .nuevo-viaje{
+
+  display: none !important;
+}
+
+/* (Opcional) Ocultar Login/Register cuando hay sesión (driver o client) */
+html[data-role="driver"] nav a[href*="Login.html" i],
+html[data-role="client"] nav a[href*="Login.html" i],
+html[data-role="driver"] .footer-links a[href*="Login.html" i],
+html[data-role="client"] .footer-links a[href*="Login.html" i],
+html[data-role="driver"] nav a[href*="registro_clientes.html" i],
+html[data-role="client"] nav a[href*="registro_clientes.html" i],
+html[data-role="driver"] .footer-links a[href*="registro_clientes.html" i],
+html[data-role="client"] .footer-links a[href*="registro_clientes.html" i] {
+  display: none !important;
+}
+
+/* Si en alguna página marcas cosas a mano con data-role-only="driver,client" */
+[data-role-only] { display: none; }
+html[data-role="driver"] [data-role-only~="driver"] { display: inline-block; }
+html[data-role="client"] [data-role-only~="client"] { display: inline-block; }
+html[data-role="guest"]  [data-role-only~="guest"]  { display: inline-block; }

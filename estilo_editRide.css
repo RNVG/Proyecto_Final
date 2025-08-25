@@ -1,0 +1,460 @@
+/* Reset y fuente base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Logo AVENTONES centrado arriba */
+.top-logo {
+  text-align: center;
+  padding: 20px 0 10px;
+}
+
+.top-logo img {
+  width: 50px;
+  vertical-align: middle;
+}
+
+.top-logo span {
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* Header con menú y búsqueda */
+header {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.nav-links a.active {
+  background-color: #0066cc;
+  color: white;
+}
+
+.user-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+
+.user-area input[type="text"] {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.profile-menu {
+  position: relative;
+}
+
+.profile-menu img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  display: none;
+  width: 120px;
+  list-style: none;
+}
+
+.profile-menu:hover .dropdown {
+  display: block;
+}
+
+.dropdown li {
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Contenido principal */
+main {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+main h2 {
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+main h2::after {
+  content: "";
+  display: block;
+  width: 100px;
+  margin: 10px auto;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Formulario principal */
+.ride-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.top-row .field-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.field-group label {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 2px;
+}
+
+.field-group input,
+.field-group select {
+  padding: 6px;
+  font-size: 14px;
+  height: 32px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.field-days {
+  margin-top: 15px;
+}
+
+.field-days label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #444;
+}
+
+.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  accent-color: #666;
+  cursor: pointer;
+}
+
+.three-fields {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.three-fields .field-group {
+  flex: 1;
+}
+
+.vehicle-details {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.vehicle-details legend {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.actions a {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.actions button {
+  background-color: #3399ff;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background-color: #007acc;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+footer {
+  background-color: #f5f5f5;
+  padding: 20px 0;
+  margin-top: 60px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+footer a {
+  color: #0066cc;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+footer p {
+  margin-top: 5px;
+}
+
+/* Barra de navegación */
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px;
+  background-color: #f5f5f5;
+  padding: 15px 60px;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.navbar a.active {
+  background-color: #0066cc;
+  color: white;
+}
+
+.search-box {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+/* Menú de usuario */
+.profile-menu {
+  position: relative;
+  margin-left: 15px;
+}
+
+.profile-menu .avatar {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.profile-menu .dropdown {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  display: none;
+  width: 150px;
+  list-style: none;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.profile-menu:hover .dropdown {
+  display: block;
+}
+
+.profile-menu .dropdown li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.profile-menu .dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+.profile-menu .dropdown li a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+
+/*------------------------------------------------------*/
+/*Responsive (Ir haciendo pruebas */
+
+/* iPhone 14 y móviles (≤430px) */
+@media (max-width: 430px) {
+  /* Navbar en 2 filas y menos padding */
+  .navbar {
+    padding: 10px 12px;
+    gap: 10px;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .navbar a { flex: 0 0 auto; padding: 6px 10px; }
+  .search-box {
+    order: 99;                 /* baja a 2ª fila si no cabe */
+    flex: 1 1 100%;
+    width: 100%;
+    margin-left: 0;
+    padding: 10px;             /* evita zoom en iOS */
+  }
+
+  /* Contenido más compacto */
+  main { max-width: 100%; margin: 18px auto; padding: 0 12px; }
+  main h2 { margin-bottom: 16px; }
+  main h2::after { width: 72px; margin: 8px auto; }
+
+  .ride-form { gap: 16px; }
+  .field-group { gap: 4px; margin-bottom: 10px; }
+  .field-group input, .field-group select { height: 38px; }
+
+  /* From / To en columna (sin desbordes) */
+  .top-row { flex-direction: column; gap: 12px; }
+  .top-row .field-group { min-width: auto; }
+
+  /* Días con menos separación */
+  .checkboxes { gap: 12px; }
+
+  /* Time / Seats / Fee en columna */
+  .three-fields:first-of-type {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  /* Vehicle details compacto en columna */
+  .vehicle-details { padding: 12px; }
+  .vehicle-details .three-fields { flex-direction: column; gap: 12px; }
+
+  /* Acciones: botón full-width */
+  .actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .actions a { font-size: 14px; align-self: flex-start; }
+  .actions button { width: 100%; padding: 12px 14px; font-size: 15px; }
+
+  /* Sticky footer (sin hueco blanco cuando el contenido es corto) */
+  html { height: -webkit-fill-available; }
+  body {
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+  }
+  main { flex: 1 0 auto; }
+  footer { margin-top: auto; padding: 12px 0; font-size: 12px; }
+}
+ 
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1366px) {
+  html { height: 100%; }
+  body{
+    min-height: 100svh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+  @supports (height: -webkit-fill-available){
+    html, body { height: -webkit-fill-available; }
+    body { min-height: -webkit-fill-available; }
+  }
+  main{ flex: 1 0 auto; }
+  
+  footer{
+    margin-top: auto;          /* Revisar, problemas con espacio  */
+    padding: 14px 0;
+    font-size: 13px;
+  }
+
+  /* Compacta un poco el layout */
+  .navbar{
+    padding: 14px 32px;
+    gap: 16px;
+  }
+  .search-box{ flex: 0 1 320px; margin-left: auto; }
+
+  main{ max-width: 860px; margin: 28px auto; padding: 0 18px; }
+  .ride-form{ gap: 20px; }
+  .top-row{ gap: 24px; }              /* Se hace en 2 para que sea comodo (revisar*/
+  .checkboxes{ gap: 16px; }
+  .three-fields{ gap: 16px; }
+  .vehicle-details{ padding: 14px; }
+  .actions{ margin-top: 20px; }
+}
+
+/* Desktop (≥1280px) */
+@media (min-width: 1280px) {
+  main { max-width: 820px; margin: 40px auto; }
+}
+
+/* Desktop 1680+ (≥1680px) */
+@media (min-width: 1680px) {
+  main { max-width: 860px; }
+}

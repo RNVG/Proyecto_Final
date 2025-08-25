@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Ride</title>
+  <script src="JS/auth.js"></script>
+  <script src="JS/edit_ride.js"></script>
+  <link rel="stylesheet" href="estilo_editRide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+</head>
+<body>
+
+  <!-- Logo principal arriba centrado -->
+  <div class="top-logo">
+    <img src="img/logo.png" alt="Logo">
+    <span>AVENTONES</span>
+  </div>
+
+  <!-- Barra de navegación con input y menú -->
+  <nav class="navbar">
+  <a href="Home.html">Home</a>
+  <a href="MyRides.html" class="active">Rides</a>
+  <a href="view_booking.html">Bookings</a>
+
+  <input type="text" placeholder="Search..." class="search-box"/>
+
+  <!-- Menú de usuario con avatar -->
+  <div class="profile-menu">
+    <img src="img/avatar.png" alt="User avatar" class="avatar" />
+    <ul class="dropdown">
+      <li><a href="login.html">Logout</a></li>
+      <li><a href="editProfile.html">Profile</a></li>
+      <li><a href="configuration.html">Configuration</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <!-- Contenido principal -->
+  <main>
+    <h2>Edit Ride</h2>
+
+    <!-- Formulario de edición de ride -->
+    <form class="ride-form">
+      
+      <!-- Primera fila: salida y destino -->
+      <div class="top-row">
+        <div class="field-group">
+          <label>Departure from</label>
+          <input type="text">
+        </div>
+        <div class="field-group">
+          <label>Arrive To</label>
+          <input type="text">
+        </div>
+      </div>
+
+      <!-- Selección de días -->
+      <div class="field-group days-below">
+        <label>Days</label>
+        <div class="checkboxes">
+          <label><input type="checkbox"> Mon</label>
+          <label><input type="checkbox"> Tue</label>
+          <label><input type="checkbox"> Wed</label>
+          <label><input type="checkbox"> Thu</label>
+          <label><input type="checkbox"> Fri</label>
+          <label><input type="checkbox"> Sat</label>
+          <label><input type="checkbox"> Sun</label>
+        </div>
+      </div>
+
+      <!-- Horario, asientos y tarifa -->
+      <div class="three-fields">
+        <div class="field-group">
+          <label>Time</label>
+          <input type="time" value="10:00">
+        </div>
+        <div class="field-group">
+          <label>Seats</label>
+          <input type="number" min="1" value="2">
+        </div>
+        <div class="field-group">
+          <label>Fee</label>
+          <input type="number" min="0" value="15">
+        </div>
+      </div>
+
+      <!-- Detalles del vehículo -->
+<fieldset class="vehicle-details">
+  <legend>Vehicle Details</legend>
+  <div class="three-fields">
+    <div class="field-group">
+      <label for="makeSelect">Make</label>
+      <select id="makeSelect">
+        <option value="" disabled selected>Loading…</option>
+      </select>
+      <!-- Se muestra solo si elige “Other vehicle…” -->
+      <input type="text" id="makeInput" placeholder="Brand / Make" style="display:none;">
+    </div>
+
+    <div class="field-group">
+      <label for="modelInput">Model</label>
+      <input type="text" id="modelInput" placeholder="Car Model">
+    </div>
+
+    <div class="field-group">
+      <label for="yearInput">Year</label>
+      <input type="number" id="yearInput" min="1900" max="2099">
+    </div>
+  </div>
+</fieldset>
+
+      <!-- Botones de acción -->
+      <div class="actions">
+        <a href="#">Cancel</a>
+        <button type="submit">Save</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Pie de página con enlaces -->
+  <footer>
+    <div class="footer-links">
+      <a href="Home.html">Home</a> |
+      <a href="MyRides.html">Rides</a> |
+      <a href="view_booking.html">Bookings</a> |
+      <a href="Configuration.html">Settings</a> |
+      <a href="Login.html">Login</a> |
+      <a href="registro_clientes.html">Register</a>
+    </div>
+    <p>&copy; Aventones.com</p>
+  </footer>
+
+</body>
+</html>

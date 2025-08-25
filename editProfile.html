@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <script src="JS/auth.js"></script>
+  <script src="JS/edit_profile.js"></script>
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="estilo_EditProfile.css" />
+</head>
+<body>
+  
+  <header class="navbar">
+    <div class="left-section">
+      <img src="img/logo.png" alt="Logo" />
+      <span>AVENTONES</span>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="Myrides.html" class="active">Rides</a></li>
+          <li><a href="view_booking.html">Bookings</a></li>
+          <li><a href="editProfile.html">Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="right-section">
+      <input type="text" placeholder="Search..." />
+      <div class="profile-menu">
+        <img src="img/avatar.png" alt="User Icon" />
+        <ul class="dropdown">
+          <li><a href="login.html">Logout</a></li>
+          <li><a href="editProfile.html">Profile</a></li>
+          <li><a href="configuration.html">Configuration</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Edit Profile</h2>
+    <form id="profile_form" class="config-form" autocomplete="off">
+  <div class="form-row">
+    <div>
+      <label for="firstName">First Name</label>
+      <input id="firstName" type="text" />
+    </div>
+    <div>
+      <label for="lastName">Last Name</label>
+      <input id="lastName" type="text" />
+    </div>
+  </div>
+
+  <label for="email">Email</label>
+  <input id="email" type="email" />
+
+  <div class="form-row">
+    <div>
+      <label for="password">Password</label>
+      <input id="password" type="password" placeholder="(leave empty to keep current)" />
+    </div>
+    <div>
+      <label for="repeatPassword">Repeat Password</label>
+      <input id="repeatPassword" type="password" />
+    </div>
+  </div>
+
+  <label for="address">Address</label>
+  <input id="address" type="text" />
+
+  <div class="form-row">
+    <div>
+      <label for="country">Country</label>
+      <select id="country">
+        <option value="Costa Rica">Costa Rica</option>
+        <option value="Panamá">Panamá</option>
+        <option value="Colombia">Colombia</option>
+      </select>
+    </div>
+    <div>
+      <label for="state">State</label>
+      <input id="state" type="text" />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label for="city">City</label>
+      <input id="city" type="text" />
+    </div>
+    <div>
+      <label for="phone">Phone Number</label>
+      <input id="phone" type="text" />
+    </div>
+  </div>
+
+  <div class="buttons">
+    <a href="#" class="cancel">Cancel</a>
+    <button class="save" type="submit">Save</button>
+  </div>
+</form>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="Home.html">Home</a>
+      <a href="Myrides.html">Rides</a>
+      <a href="view_booking.html">Bookings</a>
+      <a href="configuration.html">Settings</a>
+      <a href="login.html">Login</a>
+      <a href="registro_clientes.html">Register</a>
+    </div>
+    <p>&copy; 2025 Aventones.com</p>
+  </footer>
+</body>
+</html>

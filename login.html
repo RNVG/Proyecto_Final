@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Aventones</title>
+  <script src="JS/auth.js"></script>
+  <script src="JS/login.js"></script>
+  <link rel="stylesheet" href="estiloLogin.css" />
+</head>
+<body class="login-page">
+  <div class="login-container">
+     <!--Inicio, logo y nombre de la pagina-->
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo" />
+    </div>
+    <h1>AVENTONES</h1>
+
+    <button class="google-btn">
+      <img src="img/google-icon.png" class="google-icon" alt="Google Icon" />
+      <span>Sign in with Google</span>
+    </button>
+
+    <p class="or-text">Or</p>
+
+ <!-- El formu para el inicio de sesion -->
+    <form class="login-form">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter your Email" />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" />
+
+      <p class="register-text">
+        Not a user? <a href="registro_clientes.html">Register Now</a>
+      </p>
+
+      <button class="login-btn" type="submit">Login</button>
+    </form>
+  </div>
+<!-- Navegacion a otras paginas -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="Home.html">Home</a> |
+      <a href="Rides.html">Rides</a> |
+      <a href="Bookings.html">Bookings</a> |
+      <a href="Settings.html">Settings</a> |
+      <a href="Login.html">Login</a> |
+      <a href="Register.html">Register</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo general del cuerpo */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* principal */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+}
+
+/* Barra de navegación arriba*/
+nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 14px;
+  border-radius: 4px;
+}
+
+/* el bt de nav activo */
+nav a.active {
+  background-color: #2d89ef;
+  color: white;
+}
+
+/* Barra de busqueda */
+nav input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+/*Principal del contenido */
+main {
+  text-align: center;
+  margin: 40px auto;
+  width: 90%;
+  max-width: 1000px;
+  flex: 1;
+}
+
+.titulo {
+  font-size: 30px;
+  margin-bottom: 5px;
+  font-weight: 300;
+  color: #444;
+  border-bottom: 2px solid #ccc;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+/* Bt para agregar nuevo ride */
+.nuevo-viaje {
+  float: right;
+  margin-top: 20px;
+  background-color: #2d89ef;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Tabla de rides */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 60px;
+}
+
+thead {
+  background-color: #ddd;
+}
+/* Celdas, benditas celdas... */
+th, td {
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid #ccc;
+}
+
+/* Enlaces dentro de la tabla */
+td a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+/* Todo lo relacionado con los links del pie de pagina */
+footer {
+  background-color: #f7f7f7;
+  padding: 20px 10px;
+  text-align: center;
+  font-size: 13px;
+  border-top: 1px solid #ddd;
+}
+
+.footer-links a {
+  margin: 0 5px;
+  text-decoration: none;
+  color: #444;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.copy {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #666;
+}
+
+/* iPhone 14 / móviles: que el nav envuelva y no corte el primer link */
+@media (max-width: 480px) {
+  nav {
+    display: flex;
+    flex-wrap: wrap;              /* ← baja elementos a 2 filas si hace falta */
+    gap: 10px;
+    justify-content: flex-start;  /* ← alinea desde la izquierda (evita cortar "Home") */
+    padding-inline: 12px;
+    overflow-x: auto;             /* ← plan B: permite deslizar lateral si no cabe */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Los enlaces no se encogen a 0 */
+  nav a { flex: 0 0 auto; padding: 6px 10px; }
+
+  /* El buscador ocupa la segunda fila y todo el ancho */
+  nav input {
+    order: 99;
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  main { width: 94%; margin: 22px auto; }
+
+  .titulo {
+    font-size: 24px;
+    padding-bottom: 6px;
+  }
+
+  /* Botón ancho completo y sin float en móvil */
+  .nuevo-viaje {
+    float: none;
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px 14px;
+    font-size: 16px;
+  }
+
+  /* Tabla scrolleable horizontal sin cambiar el HTML */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 20px;
+  }
+  th, td { font-size: 13px; padding: 8px; }
+
+  footer { font-size: 12px; padding: 14px 8px; }
+}
+
+/* iPad Pro (≥768px) */
+@media (min-width: 768px) {
+  header { padding: 14px 0; }
+  .logo img { width: 40px; }
+
+  nav { gap: 16px; }
+  nav input { width: 280px; }  /* vuelve a una sola línea cómodo */
+
+  main { width: 90%; margin: 32px auto; }
+  .titulo { font-size: 28px; }
+
+  /* Mantén tu diseño original (float a la derecha) */
+  .nuevo-viaje {
+    float: right;
+    width: auto;
+    margin-top: 16px;
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+
+  table {
+    display: table;
+    overflow: visible;
+    white-space: normal;
+    margin-top: 40px;
+  }
+}
+
+/* Desktop amplio (≥1280px) */
+@media (min-width: 1280px) {
+  main { width: 88%; margin: 40px auto; }
+  .titulo { font-size: 30px; }
+  th, td { font-size: 15px; }
+}
+
+/* Desktop 1680+ */
+@media (min-width: 1680px) {
+  main { width: 80%; }
+  .titulo { font-size: 32px; }
+  th, td { font-size: 16px; padding: 12px; }
+}

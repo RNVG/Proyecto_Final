@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="JS/register_user.js"></script>
+  <title>Aventones - User Registration</title>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="container">
+      <div class="logo-container">
+        <img src="img/logo.png" alt="Aventones Logo" class="logo" />
+        <h1 class="logo-text">AVENTONES</h1>
+      </div>
+
+      <h2 class="form-title">User Registration</h2>
+
+<form id="client_registration_form" action="#" method="post">
+  <div class="row">
+    <label for="firstname" hidden>First Name</label>
+    <input type="text" id="firstname" name="firstname" placeholder="First Name" required />
+
+    <label for="lastname" hidden>Last Name</label>
+    <input type="text" id="lastname" name="lastname" placeholder="Last Name" required />
+  </div>
+
+  <div class="row">
+    <label for="birthdate" hidden>Date of Birth</label>
+    <input type="date" id="birthdate" name="birthdate" required />
+
+    <label for="cedula" hidden>ID Number</label>
+    <input type="text" id="cedula" name="cedula" placeholder="ID Number" required />
+  </div>
+
+  <label for="email" hidden>Email</label>
+  <input type="email" id="email" name="email" placeholder="Email" required />
+
+  <div class="row">
+    <label for="password" hidden>Password</label>
+    <input type="password" id="password" name="password" placeholder="Password" required />
+
+    <label for="repeat-password" hidden>Repeat Password</label>
+    <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat Password" required />
+  </div>
+
+  <label for="phone" hidden>Phone</label>
+  <input type="tel" id="phone" name="phone" placeholder="Phone Number" required />
+
+  <div class="extra-links">
+    <span>Already a user? <a href="login.html">Login here</a></span>
+    <span>Register as driver? <a href="registro_driver.html">Click here</a></span>
+  </div>
+
+  <div class="btn-wrapper">
+    <button class="submit-btn" type="submit">Sign up</button>
+  </div>
+</form>
+    </div>
+
+    <footer>
+      <a href="Home.html">Home</a> |
+      <a href="Rides.html">Rides</a> |
+      <a href="Bookings.html">Bookings</a> |
+      <a href="Settings.html">Settings</a> |
+      <a href="Login.html">Login</a> |
+      <a href="Register.html">Register</a>
+    </footer>
+  </div>
+</body>
+</html>
