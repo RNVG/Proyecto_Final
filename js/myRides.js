@@ -103,3 +103,13 @@ function rowTemplate(r) {
   // 6) Primer render
   render();
 });
+
+document.addEventListener("DOMContentLoaded", ()=>{
+  const link = document.getElementById("logoutLink");
+  if(link){
+    link.addEventListener("click", (e)=>{
+      e.preventDefault();
+      Auth.logout(); // ✅ cierra sesión y redirige
+    });
+  }
+});

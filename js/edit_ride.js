@@ -220,3 +220,13 @@ document.addEventListener("DOMContentLoaded", () => {
     location.href = "MyRides.html";
   });
 });
+
+document.addEventListener("DOMContentLoaded", ()=>{
+  const link = document.getElementById("logoutLink");
+  if(link){
+    link.addEventListener("click", (e)=>{
+      e.preventDefault();
+      Auth.logout(); // ✅ cierra sesión y redirige
+    });
+  }
+});

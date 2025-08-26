@@ -109,3 +109,13 @@ document.addEventListener("DOMContentLoaded", () => {
     else window.location.href = "Home.html";
   });
 });
+
+document.addEventListener("DOMContentLoaded", ()=>{
+  const link = document.getElementById("logoutLink");
+  if(link){
+    link.addEventListener("click", (e)=>{
+      e.preventDefault();
+      Auth.logout(); // ✅ cierra sesión y redirige
+    });
+  }
+});

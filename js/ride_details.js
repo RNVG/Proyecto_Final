@@ -1,95 +1,151 @@
-// JS/ride_details.page.js — Detalle de Ride dinámico
+// JS/rides.page.js — Detalle de Ride con bloqueo de duplicados
 document.addEventListener("DOMContentLoaded", () => {
-  // Sesión (solo para ocultar/mostrar "Request")
-  const session = (typeof Auth !== "undefined" && Auth.getSession) ? Auth.getSession() : null;
+  'use strict';
 
-  const $ = (sel) => document.querySelector(sel);
-  const get = (k) => JSON.parse(localStorage.getItem(k) || "[]");
-  const set = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+  // Helpers de storage
+  const get = k => JSON.parse(localStorage.getItem(k) || (k==="session"?"null":"[]"));
+  const set = (k,v) => localStorage.setItem(k, JSON.stringify(v));
+  const $ = s => document.querySelector(s);
 
-  // --- Obtener ride por id ---
+  // Sesión
+  const session = (window.Auth?.getSession?.() ?? get("session")) || null;
+
+  // Obtener id de ?id=
   const id = new URLSearchParams(location.search).get("id");
-  if (!id) { alert("Ride not specified."); location.href = "MyRides.html"; return; }
-  const ride = get("rides").find(r => r.id === id);
-  if (!ride) { alert("Ride not found."); location.href = "MyRides.html"; return; }
+  if (!id){ alert("Ride not specified."); location.href = "MyRides.html"; return; }
 
-  // --- Referencias
+  const rides = get("rides");
+  const ride = rides.find(r=>r.id===id);
+  if (!ride){ alert("Ride not found."); location.href = "MyRides.html"; return; }
+
+  // DOM refs
   const driverNameEl = $("#driverName");
-  const driverAvatar = $("#driverAvatar");
-
   const fromInput  = $("#fromInput");
   const toInput    = $("#toInput");
   const daysWrap   = $("#daysContainer");
-
   const timeInput  = $("#timeInput");
   const seatsInput = $("#seatsInput");
   const feeInput   = $("#feeInput");
-
   const makeSelect = $("#makeSelect");
   const modelInput = $("#modelInput");
   const yearInput  = $("#yearInput");
-
   const btnCancel  = $("#btnCancel");
   const btnRequest = $("#btnRequest");
   const form       = $("#rideDetailsForm");
 
-  // --- Info del driver (nombre / avatar si lo guardaste en users)
+  // Nombre del driver (si existe en users)
   const users = get("users");
-  const driver = users.find(u => (u.email || "").toLowerCase() === (ride.driverEmail || "").toLowerCase());
-  if (driverNameEl) driverNameEl.textContent = driver ? (driver.firstName || "") + " " + (driver.lastName || "") : (ride.driverEmail || "");
-  // Si manejas avatar en el perfil, reemplázalo aquí:
-  // if (driver && driver.avatarUrl) driverAvatar.src = driver.avatarUrl;
+  const driver = users.find(u => (u.email||"").toLowerCase()===(ride.driverEmail||"").toLowerCase());
+  if (driverNameEl) {
+    const name = `${driver?.firstName||""} ${driver?.lastName||""}`.trim();
+    driverNameEl.textContent = name || ride.driverEmail || "-";
+  }
 
-  // --- Construir checkboxes de días y marcar los del ride
+  // Pintar días
   const week = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
-  const picked = (ride.days || []).map(d => String(d).toLowerCase());
-  daysWrap.innerHTML = "";
-  week.forEach(d => {
-    const idd = "d_" + d.toLowerCase();
-    const label = document.createElement("label");
-    label.innerHTML = `<input type="checkbox" id="${idd}"> ${d}`;
-    daysWrap.appendChild(label);
-    const cb = label.querySelector("input");
-    cb.checked = picked.includes(d.toLowerCase());
-  });
+  const picked = (ride.days||[]).map(d=>String(d).toLowerCase());
+  if (daysWrap){
+    daysWrap.innerHTML = "";
+    week.forEach(d=>{
+      const label = document.createElement("label");
+      label.innerHTML = `<input type="checkbox" disabled> ${d}`;
+      const cb = label.querySelector("input");
+      cb.checked = picked.includes(d.toLowerCase());
+      daysWrap.appendChild(label);
+    });
+  }
 
-  // --- Rellenar campos
-  if (fromInput)  fromInput.value  = ride.from  || "";
-  if (toInput)    toInput.value    = ride.to    || "";
-  if (timeInput)  timeInput.value  = ride.time  || "";
-  if (seatsInput) seatsInput.value = ride.seats ?? 1;
-  if (feeInput)   feeInput.value   = ride.price ?? 0;
+  // Rellenar campos (solo lectura)
+  if (fromInput)  { fromInput.value  = ride.from  || ""; fromInput.disabled  = true; }
+  if (toInput)    { toInput.value    = ride.to    || ""; toInput.disabled    = true; }
+  if (timeInput)  { timeInput.value  = ride.time  || ""; timeInput.disabled  = true; }
+  if (seatsInput) { seatsInput.value = ride.seats ?? 1;  seatsInput.disabled = true; }
+  if (feeInput)   { feeInput.value   = ride.price ?? 0;  feeInput.disabled   = true; }
 
-  // Vehículo: mostrar SOLO la marca en el select (sin “quemados”)
-  if (makeSelect) {
+  if (makeSelect){
     makeSelect.innerHTML = "";
     const opt = document.createElement("option");
     opt.value = "__brand__";
     opt.textContent = ride.carBrand || "Brand";
     makeSelect.appendChild(opt);
-    makeSelect.value = "__brand__";
+    makeSelect.disabled = true;
   }
-  if (modelInput) modelInput.value = ride.carModel || "";
-  if (yearInput)  yearInput.value  = ride.carYear  || "";
+  if (modelInput) { modelInput.value = ride.carModel || ""; modelInput.disabled = true; }
+  if (yearInput)  { yearInput.value  = ride.carYear  || ""; yearInput.disabled  = true; }
 
-  // --- Dejar todo en solo-lectura (es página de detalle)
-  document.querySelectorAll("input, select, textarea").forEach(el => el.disabled = true);
+  // Reglas de CTA
+  const isOwner = !!(session?.email) &&
+                  (ride.driverEmail||"").toLowerCase() === session.email.toLowerCase();
+  const isFull = Number(ride.seats) <= 0;
 
-  // --- Mostrar/ocultar "Request"
-  const isOwner = session && session.email &&
-                  ride.driverEmail && session.email.toLowerCase() === ride.driverEmail.toLowerCase();
-  if (isOwner || (session && session.role === "driver")) {
-    btnRequest.style.display = "none";
+  const alreadyRequested = () => {
+    const bookings = get("bookings");
+    // Bloquear si ya existe una booking no cancelada para este ride por este cliente
+    return !!(session?.email) && bookings.some(b =>
+      b.rideId === ride.id &&
+      (b.clientEmail||"").toLowerCase() === session.email.toLowerCase() &&
+      b.status !== 'cancelled'
+    );
+  };
+
+  function refreshCTA(){
+    if (!btnRequest) return;
+
+    // Por defecto
+    btnRequest.disabled = false;
+    btnRequest.textContent = "Request";
+    btnRequest.style.display = "inline-block";
+
+    if (!session){
+      btnRequest.textContent = "Login to request";
+      btnRequest.disabled = false; // permitimos click para redirigir
+      return;
+    }
+    if (isOwner){
+      btnRequest.textContent = "Own ride";
+      btnRequest.disabled = true;
+      return;
+    }
+    if (alreadyRequested()){
+      btnRequest.textContent = "Requested";
+      btnRequest.disabled = true;
+      return;
+    }
+    if (isFull){
+      btnRequest.textContent = "Full";
+      btnRequest.disabled = true;
+      return;
+    }
   }
 
-  // --- Enviar solicitud (para clientes)
-  form.addEventListener("submit", (e) => {
+  refreshCTA();
+
+  // Enviar solicitud (solo clientes)
+  form?.addEventListener("submit", (e)=>{
     e.preventDefault();
-    if (!btnRequest || btnRequest.style.display === "none") return;
 
-    if (!session || session.role !== "client") {
-      alert("Please login as client to request this ride.");
+    if (!session){
+      alert("Please login to request this ride.");
       location.href = "login.html";
+      return;
+    }
+    if (session.role !== "client"){
+      alert("Only clients can request rides.");
+      return;
+    }
+    if (isOwner){
+      alert("No puedes solicitar tu propio ride.");
+      return;
+    }
+    if (alreadyRequested()){
+      // Doble seguridad por si el usuario intenta forzar
+      alert("Ya solicitaste este ride.");
+      refreshCTA();
+      return;
+    }
+    if (isFull){
+      alert("Sin asientos disponibles.");
+      refreshCTA();
       return;
     }
 
@@ -104,13 +160,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     set("bookings", bookings);
 
-    alert("Ride requested! Check it in Bookings.");
+    alert("Ride solicitado. Revisa la sección Bookings.");
+    refreshCTA();
     location.href = "view_booking.html";
   });
 
-  // --- Cancelar
-  btnCancel.addEventListener("click", (e) => {
+  // Cancel/volver
+  btnCancel?.addEventListener("click", (e)=>{
     e.preventDefault();
     history.length > 1 ? history.back() : (location.href = "MyRides.html");
   });
+});
+
+document.addEventListener("DOMContentLoaded", ()=>{
+  const link = document.getElementById("logoutLink");
+  if(link){
+    link.addEventListener("click", (e)=>{
+      e.preventDefault();
+      Auth.logout(); // ✅ cierra sesión y redirige
+    });
+  }
 });

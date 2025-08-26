@@ -4,67 +4,44 @@
   <meta charset="UTF-8" />
   <title>View Booking</title>
   <link rel="stylesheet" href="estilo_viewBrooking.css" />
+  <!-- Orden correcto -->
+  <script src="JS/auth.js" defer></script>
+  <script src="JS/view_booking.js" defer></script>
 </head>
 <body>
 
-  <!-- Logo principal arriba centrado -->
   <div class="top-logo">
     <img src="img/logo.png" alt="Logo" />
     <span>AVENTONES</span>
   </div>
 
-  <!-- Barra de navegación con input y menú -->
- <nav class="navbar">
-  <div class="nav-left">
-    <a href="Home.html">Home</a>
-    <a href="MyRides.html" class="active">Rides</a>
-    <a href="view_booking.html">Bookings</a>
-  </div>
-
-  <div class="nav-right">
-    <input type="text" placeholder="Search..." class="search-box" />
-    <div class="profile-menu">
-      <img src="img/avatar.png" alt="User avatar" class="avatar" />
-      <ul class="dropdown">
-        <li><a href="login.html">Logout</a></li>
-        <li><a href="editProfile.html">Profile</a></li>
-        <li><a href="configuration.html">Configuration</a></li>
-      </ul>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="Home.html">Home</a>
+      <a href="MyRides.html" class="active">Rides</a>
+      <a href="view_booking.html">Bookings</a>
     </div>
-  </div>
-</nav>
+    <div class="nav-right">
+      <input type="text" placeholder="Search..." class="search-box" />
+      <div class="profile-menu">
+        <img src="img/avatar.png" alt="User avatar" class="avatar" />
+        <ul class="dropdown">
+          <li><a href="login.html">Logout</a></li>
+          <li><a href="editProfile.html">Profile</a></li>
+          <li><a href="configuration.html">Configuration</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <!-- Contenido principal -->
   <main>
     <h2>Bookings</h2>
     <table class="bookings-table">
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Ride</th>
-          <th>Accept / Reject</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><img src="img/avatar.png" alt="User" class="avatar">fulano</td>
-          <td>Ciudad Quesada - Naranjo</td>
-          <td>
-            <a href="#">Accept</a> | <a href="#">Reject</a>
-          </td>
-        </tr>
-        <tr>
-          <td><img src="img/avatar.png" alt="User" class="avatar">yluna</td>
-          <td>Fortuna - San José</td>
-          <td>
-            <a href="#">Accept</a> | <a href="#">Reject</a>
-          </td>
-        </tr>
-      </tbody>
+      <thead></thead>
+      <tbody></tbody>
     </table>
   </main>
 
-  <!-- Pie de página con enlaces -->
   <footer>
     <div class="footer-links">
       <a href="Home.html">Home</a> |
@@ -76,6 +53,5 @@
     </div>
     <p>&copy; Aventones.com</p>
   </footer>
-
 </body>
-</html>
+</html>s

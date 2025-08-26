@@ -85,3 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.addEventListener("click", () => pmenu?.classList.remove("open"));
 });
+
+document.addEventListener("DOMContentLoaded", ()=>{
+  const link = document.getElementById("logoutLink");
+  if(link){
+    link.addEventListener("click", (e)=>{
+      e.preventDefault();
+      Auth.logout(); // ✅ cierra sesión y redirige
+    });
+  }
+});
