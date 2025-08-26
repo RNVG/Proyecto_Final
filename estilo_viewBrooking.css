@@ -180,3 +180,119 @@ footer p {
   margin-top: 10px;
   color: gray;
 }
+
+@media (min-width: 1367px) {
+  main { max-width: 1200px; padding: 0 40px; }
+
+  .navbar { padding: 12px 60px; }
+  .nav-left a { padding: 8px 18px; font-size: 15px; }
+
+  .bookings-table th, .bookings-table td {
+    padding: 22px 24px;
+    font-size: 15px;
+  }
+}
+
+/* =========================
+   DESKTOP (≥1367px) — 1680×1050
+   ========================= */
+@media (min-width: 1367px) {
+  main { max-width: 1200px; margin: 40px auto; padding: 0 40px; }
+
+  .navbar { padding: 14px 60px; }
+  .nav-left a { padding: 8px 18px; font-size: 15px; }
+
+  .bookings-table th, .bookings-table td {
+    padding: 20px 22px;
+    font-size: 15px;
+  }
+  footer { margin-top: 72px; }
+}
+
+/* ======================================
+   iPAD / TABLETS (768–1366px) — STICKY FOOTER
+   ====================================== */
+@media (min-width: 768px) and (max-width: 1366px) {
+  html { height: 100%; }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh; /* viewport real */
+    min-height: 100dvh;
+    background-color: white;
+  }
+
+  main { flex: 1 0 auto; }
+  footer { margin-top: auto; }
+
+  /* iPad Safari (barras/notch) */
+  @supports (height: -webkit-fill-available) {
+    html, body { height: -webkit-fill-available; }
+    body { min-height: -webkit-fill-available; }
+  }
+
+  /* Ajustes de layout similares a Home */
+  .navbar { flex-wrap: wrap; padding: 12px 24px; }
+  .nav-left, .nav-right { gap: 12px; }
+
+  main { max-width: 1000px; margin: 30px auto; padding: 0 24px; }
+
+  .bookings-table th, .bookings-table td {
+    padding: 16px 18px;
+    font-size: 14px;
+  }
+}
+
+/* ===========================================================
+   iPHONE 14 Y MÓVILES (≤430px) — TIPOGRAFÍA + ELEMENTOS GRANDES
+   =========================================================== */
+@media (max-width: 430px) {
+  /* Safety: no heredar flex del bloque iPad */
+  body { display: block; min-height: auto; font-size: 16px; }
+
+  /* Logo y navbar (igual filosofía que Home) */
+  .top-logo { margin-top: 10px; }
+  .top-logo img { width: 40px; }
+  .top-logo span { font-size: 22px; letter-spacing: 1.5px; }
+
+  .navbar {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+  .nav-left, .nav-right { flex-wrap: wrap; gap: 10px; }
+  .nav-left a { padding: 8px 12px; font-size: 16px; }
+  .search-box { width: 100%; padding: 12px; font-size: 16px; }
+
+  /* Contenido centrado y legible */
+  main { margin: 20px auto; padding: 0 14px; }
+  main h2 { font-size: 22px; margin-bottom: 18px; font-weight: 400; }
+
+  /* Tabla con scroll horizontal + celdas grandes */
+  .bookings-table {
+    display: block;
+    width: max-content;     /* evita aplastar columnas */
+    min-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 16px;        /* texto más grande */
+  }
+  .bookings-table th, .bookings-table td {
+    padding: 16px 18px;
+    white-space: nowrap;
+  }
+  .bookings-table .avatar { width: 36px; height: 36px; }
+
+  /* Enlaces cómodos al tacto */
+  td a { margin: 0 6px; font-size: 16px; }
+
+  /* Footer compacto y legible (sin sticky en móvil) */
+  footer { padding: 16px 12px; font-size: 15px; margin-top: 24px; }
+  .footer-links a { margin: 0 6px; font-size: 15px; }
+}
+
+:root { scrollbar-gutter: stable both-edges; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

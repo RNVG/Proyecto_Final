@@ -231,3 +231,190 @@ footer a {
   text-decoration: none;
   margin: 0 8px;
 }
+
+@media (min-width: 1367px) {
+  main { max-width: 1280px; padding: 48px 32px; }
+
+  .top-logo, header { padding: 18px 40px; }
+
+  .nav-links { gap: 28px; }
+  .user-area input[type="text"] { width: 220px; }
+
+  .search-box { max-width: 980px; padding: 24px; }
+
+  .search-top { gap: 16px; }
+  .search-top label { min-width: 140px; }
+  .search-top select { width: 200px; }
+
+  .days { gap: 28px 60px; }
+
+  .results th, .results td { padding: 10px 12px; font-size: 15px; }
+  #map { height: 520px; }
+
+  footer { margin-top: 72px; }
+}
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1366px) {
+  html { height: 100%; }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;   /* altura real (viewport dinámico) */
+    min-height: 100dvh;
+    background-color: white;
+  }
+
+  /* El contenido rellena; el footer cae al fondo */
+  main { flex: 1 0 auto; }
+  footer { margin-top: auto; }
+
+  /* iPad Safari (barras/notch) */
+  @supports (height: -webkit-fill-available) {
+    html, body { height: -webkit-fill-available; }
+    body { min-height: -webkit-fill-available; }
+  }
+
+  /* Comodidad de lectura en tablet */
+  main { max-width: 1000px; padding: 36px 24px; }
+  .top-logo, header { padding: 16px 24px; }
+
+  /* Navbar: que no rompa línea feo */
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .user-area { gap: 12px; }
+  .user-area input[type="text"] { width: 180px; }
+
+  /* Formulario */
+  .search-box { max-width: 860px; padding: 20px; }
+  .search-top { gap: 12px; }
+  .search-top label { min-width: 120px; }
+  .search-top select { width: 180px; }
+
+  /* “Days” en 2 filas: 4 + 3 */
+  .days {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    gap: 10px 24px;
+    justify-content: start;
+  }
+
+  #map { height: 420px; }
+}
+
+@media (max-width: 430px) {
+  /* Safety: evita heredar flex del bloque iPad */
+  body { display: block; min-height: auto; }
+
+  /* Encabezados compactos */
+  .top-logo, header { padding: 12px 14px; }
+  .top-logo img { height: 34px; }
+  .top-logo span { font-size: 20px; }
+
+  /* Navbar en dos filas si hace falta */
+  header { gap: 10px; flex-wrap: wrap; }
+  .nav-links {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .nav-links li a { padding: 6px 2px; }
+
+  .user-area {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .user-area input[type="text"] {
+    flex: 1 1 auto;
+    width: 100%;
+    margin-left: 0;
+    padding: 10px; /* evita zoom en iOS */
+  }
+
+  /* Contenido centrado y sin desbordes horizontales */
+  main {
+    max-width: 100%;
+    margin: 16px auto;
+    padding: 0 12px;
+  }
+  h2 {
+    font-size: 22px;
+    margin: 16px auto 8px;
+  }
+
+  /* Caja de búsqueda a ancho completo */
+  .search-box {
+    max-width: 100%;
+    padding: 16px 12px;
+  }
+
+  /* Filas del form apiladas */
+  .search-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+  }
+  .search-top label { margin-right: 0; min-width: 0; }
+  .search-top select {
+    width: 100%;
+    height: 38px;
+    font-size: 16px; /* accesibilidad iOS */
+  }
+
+  /* “Days” 4 + 3, sin cortes de palabra */
+  .days {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    gap: 8px 16px;
+    justify-content: start;
+  }
+  .days label { white-space: nowrap; }
+
+  /* Tabla responsive con scroll horizontal suave */
+  .results { margin-top: 18px; }
+  .results table {
+    display: block;
+    width: max-content;      /* evita achatar columnas */
+    min-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .results th, .results td {
+    padding: 8px 10px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  /* Mapa más compacto */
+  #map { height: 300px; }
+
+  /* Footer en flujo normal (no sticky en móvil) */
+  footer {
+    margin-top: 28px;
+    padding: 16px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Evita saltos visuales al aparecer el scroll (Chrome/Edge) */
+:root { scrollbar-gutter: stable both-edges; }
+
+/* Mejoras de foco para accesibilidad */
+a:focus, button:focus, select:focus, input:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Respeta usuarios con reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
